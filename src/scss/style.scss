@@ -1,0 +1,139 @@
+@import "include/vars";
+@import "include/mixins";
+
+div.jc-calendar {
+
+  > header {
+    position: relative;
+    text-align: center;
+
+    > a.jc-prev, > a.jc-next, > a.jc-gotoToday {
+      @include mask(null, $mainColor, 22px);
+      position: absolute;
+      top: 0;
+      display: block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      transition: background 0.2s;
+
+      &:hover {
+        background: rgba($mainColor, 0.1);
+      }
+
+      &.jc-hidden {
+        display: none;
+      }
+    }
+
+    > a.jc-prev {
+      left: 0;
+
+      &::before {
+        @include maskImage('icon-arrow-l');
+      }
+    }
+
+    > a.jc-next {
+      right: 0;
+
+      &::before {
+        @include maskImage('icon-arrow-r');
+      }
+    }
+
+    > a.jc-gotoToday {
+      left: 40px;
+
+      &::before {
+        @include maskImage('icon-today');
+        mask-size: 18px;
+        -webkit-mask-size: 18px;
+      }
+    }
+
+    > select {
+      font-size: 120%;
+      color: $textColor;
+      background: transparent;
+      border: none;
+      outline: none;
+      margin: 7px 3px 0 0;
+      cursor: pointer;
+
+      > option {
+        font-weight: 300;
+      }
+    }
+
+    > div.jc-dayLabels {
+      display: flex;
+      margin: 20px 0 12px 0;
+
+      > div {
+        width: calc(100% / 7);
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 110%
+      }
+    }
+  }
+
+  > div.jc-days {
+    display: flex;
+    flex-flow: row wrap;
+
+    > div {
+      position: relative;
+      display: table;
+      width: calc(100% / 7);
+
+      &.jc-hidden {
+        display: none;
+      }
+
+      &.jc-inactive > span {
+        color: $textColorLight;
+      }
+
+      &.jc-today {
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: calc(50% - 15px);
+          left: calc(50% - 15px);
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          background: $mainColor;
+        }
+
+        > * {
+          color: #fff;
+          font-weight: 400;
+        }
+      }
+
+      > * {
+        position: relative;
+        display: table-cell;
+        vertical-align: middle;
+        width: 100%;
+        height: 100%;
+        padding: 22% 0;
+        text-align: center;
+        color: $textColor;
+        font-size: 110%;
+        font-weight: 300;
+        transition: background 0.2s;
+        z-index: 2;
+      }
+
+      > a:hover {
+        background: rgba(0, 0, 0, 0.03);
+      }
+    }
+  }
+}
