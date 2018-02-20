@@ -47,7 +47,7 @@ div.jc-calendar > header {
     background: transparent;
     border: none;
     outline: none;
-    margin: 7px 3px 0 0;
+    margin: 5px 3px 0 0;
     cursor: pointer; }
     div.jc-calendar > header > select > option {
       font-weight: 300; }

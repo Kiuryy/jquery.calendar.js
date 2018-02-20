@@ -61,7 +61,7 @@
          * Init
          */
         let initBounds = () => {
-            $.each(["minDate", "maxDate"], (i, field)=> { // Parsed die konfigurierten Werte fÃ¼r minDate und maxDate
+            $.each(["minDate", "maxDate"], (i, field) => { // Parsed die konfigurierten Werte für minDate und maxDate
                 if (!(opts[field] instanceof Date)) {
                     let val = opts[field];
 
@@ -91,13 +91,13 @@
                                 }
                             }
                         }
-                    } else { // ungÃ¼ltige Konfiguration oder kein Wert gewÃ¼nscht -> ignorieren
+                    } else { // ungültige Konfiguration oder kein Wert gewünscht -> ignorieren
                         opts[field] = null;
                     }
                 }
             });
 
-            if (opts.minDate.getTime() > opts.maxDate.getTime()) { // minDate kann nicht grÃ¶ÃŸer als maxDate sein
+            if (opts.minDate.getTime() > opts.maxDate.getTime()) { // minDate kann nicht größer als maxDate sein
                 opts.minDate = new Date(opts.maxDate.getTime());
             }
 
@@ -109,7 +109,7 @@
 
 
         let correctCurrentDate = () => {
-            if (opts.maxDate !== null && currentDate.getTime() > opts.maxDate.getTime()) { // currentDate kann nicht grÃ¶ÃŸer als maxDate sein
+            if (opts.maxDate !== null && currentDate.getTime() > opts.maxDate.getTime()) { // currentDate kann nicht größer als maxDate sein
                 currentDate = new Date(opts.maxDate.getTime());
             } else if (opts.minDate !== null && currentDate.getTime() < opts.minDate.getTime()) { // currentDate kann nicht kleiner als maxDate sein
                 currentDate = new Date(opts.minDate.getTime());
@@ -248,7 +248,7 @@
                     elm: $(e.currentTarget).parent("div"),
                     date: $(e.currentTarget).data("date")
                 });
-            }).on("mouseenter", "div." + opts.classes.dayWrapper + " > div > a", (e) => { // Mouseover Ã¼ber bestimmten Tag
+            }).on("mouseenter", "div." + opts.classes.dayWrapper + " > div > a", (e) => { // Mouseover über bestimmten Tag
                 e.preventDefault();
                 opts.onDayMouseenter({
                     event: e,
@@ -278,7 +278,9 @@
             });
         };
 
-
+        /**
+         *
+         */
         let initHtml = () => {
             elm.empty();
             let calendar = $("<div />").addClass(opts.classes.calendar).appendTo(elm);
@@ -292,7 +294,7 @@
 
             if (opts.gotoTodayButton) {
                 let todayInfos = getDateInfos(now.getFullYear(), now.getMonth(), now.getDate());
-                if (todayInfos.inBounds) { // nur anzeigen wenn das heutige Datum Ã¼berhaupt im Kalendar angezeigt wird
+                if (todayInfos.inBounds) { // nur anzeigen wenn das heutige Datum überhaupt im Kalendar angezeigt wird
                     $("<a />").attr("href", "#").addClass(opts.classes.gotoToday).appendTo(header);
                 }
             }
@@ -313,7 +315,7 @@
         };
 
         /**
-         * Gibt die Anzahl Tage des aktuellen Monats zurÃ¼ck
+         * Gibt die Anzahl Tage des aktuellen Monats zurück
          *
          * @returns {number}
          */
@@ -324,11 +326,11 @@
         };
 
         /**
-         * Gibt Infos zum Ã¼bergebenen Datum zurÃ¼ck
+         * Gibt Infos zum übergebenen Datum zurück
          *
-         * @param int y
-         * @param int m
-         * @param int d
+         * @param {int} y
+         * @param {int} m
+         * @param {int} d
          * @returns {{inBounds: boolean, today: boolean}}
          */
         let getDateInfos = (y, m, d) => {
