@@ -1,3 +1,5 @@
 .idea/
-tmp/
+__tmp/
+__dist/
 node_modules/
+package-lock.json
